@@ -1,7 +1,7 @@
 ################################################################################
-# This software is released under the MIT License see LICENSE
+# This software is released under the MIT License see LICENSE.txt
 # Filename : logger.ps1
-# LogOutput: Dispay log/Write log to file.
+# Overview : Dispay log /Write log to file.
 # HowToUse : Import
 #              when logger.ps1 is located to functions folder
 #              ${shelldir}=(Split-Path -Path ${MyInvocation}.MyCommand.Path -Parent)
@@ -9,15 +9,11 @@
 #              . ${functionsdir}\logger.ps1
 #            Initialise
 #              ${logger} = New-Object Logger
-#            Define loglevel varibles
-#              ${debug_level}    = ${logger}.get_debug_level()
-#              ${info_level}     = ${logger}.get_info_Level()
-#              ${warning_level}  = ${logger}.get_warning_level()
-#              ${error_level}    = ${logger}.get_error_level()
-#              ${critical_level} = ${logger}.get_critical_level()  
 #            LogOutout configuration
-#              ${logger}.SetLoglevel(${debug_level})
-#              ${ret}=${logger}.CreateLogfile(${logfile}) <- if nessesary
+#              when you use the debug level:
+#                ${logger}.SetLoglevel(${logger}.get_debug_level())
+#              if you need a log file:
+#                ${ret}=${logger}.CreateLogfile(${logfile})
 #            LogOutput
 #              ${logger}.debug("debug level message")
 #              ${logger}.info("info level message")
@@ -26,7 +22,7 @@
 #              ${logger}.critical("critical level message")
 #-------------------------------------------------------------------------------
 # Author: Isaac Factory
-# Date+ 2021/02/01
+# Date: 2021/02/01
 # Code version: v1.00
 ################################################################################
 
