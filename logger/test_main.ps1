@@ -47,7 +47,7 @@ function main([array]${cmdOptions}) {
 
     ${optCount} = ${cmdOptions}.Length
     if(${optCount} -eq 0) {
-        ${logger}.error("There is no command-line options.")
+        ${logger}.error("There are no command-line options.")
         return ${error_end}
     } else {
         ${logger}.info("The number of command-line options is ${optCount}.")
