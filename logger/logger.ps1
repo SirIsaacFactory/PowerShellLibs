@@ -37,7 +37,7 @@ class logger {
     [int]${NORMAL_END} = 0
     [int]${ERROR_END}  = 1
 
-    # loglevel const
+    # loglevel
     [int]${DEBUG_LEVEL}    = 0
     [int]${INFO_LEVEL}     = 1
     [int]${WARNING_LEVEL}  = 2
@@ -45,7 +45,7 @@ class logger {
     [int]${CRITICAL_LEVEL} = 4
     [int]${loglevel}       = [int]${INFO_LEVEL}
 
-    # loglabel const
+    # loglabel
     [string]${LABEL_DEBUG}    = "[debug]   "
     [string]${LABEL_INFO}     = "[info]    "
     [string]${LABEL_WARNING}  = "[warning] "
@@ -165,16 +165,16 @@ class logger {
     # output line
     ############################################################################
     [void]output_line([int]${level}, [string]${logmsg}) {
-        ${current_time} = (Get-Date -Format "yyyy/MM/dd HH:mm:ss")
-        switch(${level}) {
-            ${this}.DEBUG_LEVEL    { ${this}.loglabel = ${this}.LABEL_DEBUG    }
-            ${this}.INFO_LEVEL     { ${this}.loglabel = ${this}.LABEL_INFO     }
-            ${this}.WARNING_LEVEL  { ${this}.loglabel = ${this}.LABEL_WARNING  }
-            ${this}.ERROR_LEVEL    { ${this}.loglabel = ${this}.LABEL_ERROR    }
-            ${this}.CRITICAL_LEVEL { ${this}.loglabel = ${this}.LABEL_CRITICAL }
-        }
-
         if(${level} -ge ${this}.loglevel) {
+            ${current_time} = (Get-Date -Format "yyyy/MM/dd HH:mm:ss")
+            switch(${level}) {
+                ${this}.DEBUG_LEVEL    { ${this}.loglabel = ${this}.LABEL_DEBUG    }
+                ${this}.INFO_LEVEL     { ${this}.loglabel = ${this}.LABEL_INFO     }
+                ${this}.WARNING_LEVEL  { ${this}.loglabel = ${this}.LABEL_WARNING  }
+                ${this}.ERROR_LEVEL    { ${this}.loglabel = ${this}.LABEL_ERROR    }
+                ${this}.CRITICAL_LEVEL { ${this}.loglabel = ${this}.LABEL_CRITICAL }
+            }
+    
             # get caller information
             ${callstack}=(Get-PSCallStack)
             ${callstack}=${callstack}[2]
