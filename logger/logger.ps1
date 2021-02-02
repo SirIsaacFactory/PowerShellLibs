@@ -13,7 +13,10 @@
 #              when you use the debug level:
 #                ${logger}.SetLoglevel(${logger}.get_debug_level())
 #              if you need a log file:
-#                ${ret}=${logger}.CreateLogfile(${logfile})
+#                clear log file before write
+#                  ${ret} = ${logger}.CreateLogfile(${logfile})
+#                not clear log file before write
+#                  ${ret} = ${logger}.OpenLogfile(${logfile})
 #            LogOutput
 #              ${logger}.debug("debug level message")
 #              ${logger}.info("info level message")

@@ -13,6 +13,8 @@
 # Define variables
 ################################################################################
 ${shelldir}   = (Split-Path -Path ${MyInvocation}.MyCommand.Path -Parent)
+${logbase}    = [System.IO.Path]::GetFileNameWithoutExtension(${MyInvocation}.MyCommand.Path)
+${logfile}    = Join-Path -Path ${shelldir} -ChildPath "${logbase}.log"
 ${normal_end} = 0
 ${error_end}  = 255
 
@@ -23,21 +25,24 @@ ${error_end}  = 255
 . ${shelldir}\logger.ps1
 ${logger} = New-Object Logger
 ${logger}.SetLoglevel(${logger}.get_debug_level())
+# ${ret} = ${logger}.CreateLogfile(${logfile})
+# ${ret} = ${logger}.OpenLogfile(${logfile})
 
 
 ################################################################################
-# Define displayDate
+# Define displayArgs
 ################################################################################
 function displayArgs([array]${cmdOptions}) {
     ${logger}.debug("start")
 
     ${logger}.info("The command-line options are as below:")
     foreach(${opt} in ${cmdOptions}) {
-        ${logger}.info("${opt}.")
+        ${logger}.info("${opt}")
     }
 
     ${logger}.debug("end")
 }
+
 
 ################################################################################
 # Define main
@@ -59,6 +64,7 @@ function main([array]${cmdOptions}) {
     ${logger}.debug("end")
     return ${normal_end}
 }
+
 
 ################################################################################
 # Execute main
