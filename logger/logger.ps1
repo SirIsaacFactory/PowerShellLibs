@@ -24,7 +24,7 @@
 #              ${logger}.error("error level message")
 #              ${logger}.critical("critical level message")
 #-------------------------------------------------------------------------------
-# Author: Isaac Factory
+# Author: Isaac Factory (sir.isaac.factory@icloud.com)
 # Date: 2021/02/01
 # Code version: v1.00
 ################################################################################

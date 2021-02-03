@@ -4,7 +4,7 @@
 # Overview : test script for logger.ps1
 # HowToUse : powershell -file test_main.ps1
 #-------------------------------------------------------------------------------
-# Author: Isaac Factory
+# Author: Isaac Factory (sir.isaac.factory@icloud.com)
 # Date: 2021/02/01
 # Code version: v1.00
 ################################################################################
