@@ -9,15 +9,15 @@
 #              . ${functionsdir}\logger.ps1
 #            Initialise
 #              ${logger} = New-Object Logger
-#            LogOutout configuration
+#            Log output configuration
 #              when you use the debug level:
-#                ${logger}.SetLoglevel(${logger}.get_debug_level())
+#                ${logger}.SetLogLevel(${logger}.get_debug_level())
 #              if you need a log file:
 #                clear log file before write
 #                  ${ret} = ${logger}.CreateLogfile(${logfile})
 #                not clear log file before write
 #                  ${ret} = ${logger}.OpenLogfile(${logfile})
-#            LogOutput
+#            Log output
 #              ${logger}.debug("debug level message")
 #              ${logger}.info("info level message")
 #              ${logger}.warning("warning level message")
@@ -70,7 +70,7 @@ class logger {
     ############################################################################
     # set loglevel
     ############################################################################
-    SetLoglevel(${level}) {
+    SetLogLevel(${level}) {
         ${this}.loglevel = ${level}
     }
 
@@ -78,7 +78,7 @@ class logger {
     ############################################################################
     # create logfile
     ############################################################################
-    [int]CreateLogfile([string]${logfilepath}) {
+    [int]CreateLogFile([string]${logfilepath}) {
         ${this}.debug("start")
 
         # check log directory existence
@@ -119,7 +119,7 @@ class logger {
     ############################################################################
     # open logfile
     ############################################################################
-    [int]OpenLogfile([string]${logfilepath}) {
+    [int]OpenLogFile([string]${logfilepath}) {
         ${this}.debug("start")
 
         # check log file existence
@@ -182,11 +182,11 @@ class logger {
             ${callstack}=(Get-PSCallStack)
             ${callstack}=${callstack}[2]
 
-            # get Script name
+            # get script name
             ${callerscript_fullpath}=[string]${callstack}.ScriptName
             ${callerscript}=Split-Path -Path ${callerscript_fullpath} -Leaf
 
-            # get Script line
+            # get script line
             ${callerline}=[string]${callstack}.ScriptLineNumber
 
             # get function name

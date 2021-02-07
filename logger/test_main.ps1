@@ -24,9 +24,9 @@ ${error_end}  = 255
 ################################################################################
 . ${shelldir}\logger.ps1
 ${logger} = New-Object Logger
-${logger}.SetLoglevel(${logger}.get_debug_level())
-# ${ret} = ${logger}.CreateLogfile(${logfile})
-# ${ret} = ${logger}.OpenLogfile(${logfile})
+${logger}.SetLogLevel(${logger}.get_debug_level())
+# ${ret} = ${logger}.CreateLogFile(${logfile})
+# ${ret} = ${logger}.OpenLogFile(${logfile})
 
 
 ################################################################################
