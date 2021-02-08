@@ -1,7 +1,7 @@
 ################################################################################
 # This software is released under the MIT License see LICENSE.txt
 # Filename : logger.ps1
-# Overview : Dispay log /Write log to file.
+# Overview : Display log/Write log to a file.
 # HowToUse : Import
 #              when logger.ps1 is located to functions folder
 #              ${shelldir}=(Split-Path -Path ${MyInvocation}.MyCommand.Path -Parent)
