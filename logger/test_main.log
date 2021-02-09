@@ -1,0 +1,29 @@
+2021/02/09 23:34:07,[debug]   ,logger.ps1,OpenLogFile,143,LOGFILE = D:\Git\IsaacFactory\PowerShellLibs\logger\test_main.log
+2021/02/09 23:34:07,[debug]   ,logger.ps1,OpenLogFile,144,end
+2021/02/09 23:34:07,[debug]   ,test_main.ps1,main,50,start
+2021/02/09 23:34:07,[info]    ,test_main.ps1,main,57,The number of command-line options is 3.
+2021/02/09 23:34:07,[debug]   ,test_main.ps1,displayArgs,36,start
+2021/02/09 23:34:07,[info]    ,test_main.ps1,displayArgs,38,The command-line options are as below:
+2021/02/09 23:34:07,[info]    ,test_main.ps1,displayArgs,40,3
+2021/02/09 23:34:07,[info]    ,test_main.ps1,displayArgs,40,3
+2021/02/09 23:34:07,[info]    ,test_main.ps1,displayArgs,40,3
+2021/02/09 23:34:07,[debug]   ,test_main.ps1,displayArgs,43,end
+2021/02/09 23:34:07,[debug]   ,test_main.ps1,main,63,end
+2021/02/09 23:35:37,[debug]   ,test_main.ps1,main,50,start
+2021/02/09 23:35:37,[info]    ,test_main.ps1,main,57,The number of command-line options is 3.
+2021/02/09 23:35:37,[debug]   ,test_main.ps1,displayArgs,36,start
+2021/02/09 23:35:37,[info]    ,test_main.ps1,displayArgs,38,The command-line options are as below:
+2021/02/09 23:35:37,[info]    ,test_main.ps1,displayArgs,40,3
+2021/02/09 23:35:37,[info]    ,test_main.ps1,displayArgs,40,3
+2021/02/09 23:35:37,[info]    ,test_main.ps1,displayArgs,40,3
+2021/02/09 23:35:37,[debug]   ,test_main.ps1,displayArgs,43,end
+2021/02/09 23:35:37,[debug]   ,test_main.ps1,main,63,end
+2021/02/09 23:35:58,[debug]   ,test_main.ps1,main,50,start
+2021/02/09 23:35:58,[info]    ,test_main.ps1,main,57,The number of command-line options is 3.
+2021/02/09 23:35:58,[debug]   ,test_main.ps1,displayArgs,36,start
+2021/02/09 23:35:58,[info]    ,test_main.ps1,displayArgs,38,The command-line options are as below:
+2021/02/09 23:35:58,[info]    ,test_main.ps1,displayArgs,40,3
+2021/02/09 23:35:58,[info]    ,test_main.ps1,displayArgs,40,3
+2021/02/09 23:35:58,[info]    ,test_main.ps1,displayArgs,40,3
+2021/02/09 23:35:58,[debug]   ,test_main.ps1,displayArgs,43,end
+2021/02/09 23:35:58,[debug]   ,test_main.ps1,main,63,end

@@ -5,7 +5,8 @@
 # HowToUse : powershell -file test_main.ps1
 #-------------------------------------------------------------------------------
 # Author: Isaac Factory (sir.isaac.factory@icloud.com)
-# Date: 2021/02/01
+# Repository: https://github.com/SirIsaacFactory/PowerShellLibs
+# Date: 2021/02/09
 # Code version: v1.00
 ################################################################################
 
@@ -24,9 +25,9 @@ ${error_end}  = 255
 ################################################################################
 . ${shelldir}\logger.ps1
 ${logger} = New-Object Logger
-${logger}.SetLogLevel(${logger}.get_debug_level())
+${logger}.SetDebugLevel()
 # ${ret} = ${logger}.CreateLogFile(${logfile})
-# ${ret} = ${logger}.OpenLogFile(${logfile})
+${ret} = ${logger}.OpenLogFile(${logfile})
 
 
 ################################################################################
@@ -42,7 +43,6 @@ function displayArgs([array]${cmdOptions}) {
 
     ${logger}.debug("end")
 }
-
 
 ################################################################################
 # Define main
@@ -64,7 +64,6 @@ function main([array]${cmdOptions}) {
     ${logger}.debug("end")
     return ${normal_end}
 }
-
 
 ################################################################################
 # Execute main

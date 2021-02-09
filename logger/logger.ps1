@@ -11,7 +11,7 @@
 #              ${logger} = New-Object Logger
 #            Log output configuration
 #              when you use the debug level:
-#                ${logger}.SetLogLevel(${logger}.get_debug_level())
+#                ${logger}.SetDebugLevel()
 #              if you need a log file:
 #                clear log file before write
 #                  ${ret} = ${logger}.CreateLogfile(${logfile})
@@ -25,7 +25,8 @@
 #              ${logger}.critical("critical level message")
 #-------------------------------------------------------------------------------
 # Author: Isaac Factory (sir.isaac.factory@icloud.com)
-# Date: 2021/02/01
+# Repository: https://github.com/SirIsaacFactory/PowerShellLibs
+# Date: 2021/02/09
 # Code version: v1.00
 ################################################################################
 
@@ -59,27 +60,32 @@ class logger {
     # logfile
     [string]${LOGFILE} = ""
 
-    # return loglevel
-    [int]debug_level()    { return ${this}.DEBUG_LEVEL    }
-    [int]info_level()     { return ${this}.INFO_LEVEL     }
-    [int]warning_level()  { return ${this}.WARNING_LEVEL  }
-    [int]error_level()    { return ${this}.ERROR_LEVEL    }
-    [int]critical_level() { return ${this}.CRITICAL_LEVEL }
-
-
     ############################################################################
-    # set loglevel
+    # Set loglevel
     ############################################################################
-    SetLogLevel(${level}) {
-        ${this}.loglevel = ${level}
+    [void]SetDebugLevel() {
+        ${this}.loglevel = ${this}.DEBUG_LEVEL
+    }
+    [void]SetInfoLevel() {
+        ${this}.loglevel = ${this}.INFO_LEVEL
+    }
+    [void]SetWarningLevel() {
+        ${this}.loglevel = ${this}.WARNING_LEVEL
+    }
+    [void]SetErrorLevel() {
+        ${this}.loglevel = ${this}.ERROR_LEVEL
+    }
+    [void]SetCriticalLevel() {
+        ${this}.loglevel = ${this}.CRITICAL_LEVEL
+    }
+    [int]GetLogLevel() {
+        return ${this}.loglevel
     }
 
-
     ############################################################################
-    # create logfile
+    # Create logfile
     ############################################################################
     [int]CreateLogFile([string]${logfilepath}) {
-        ${this}.debug("start")
 
         # check log directory existence
         ${logdir}=(Split-Path -Path ${logfilepath} -Parent)
@@ -87,8 +93,6 @@ class logger {
             ${this}.error("[${logdir}] directory does not exist.")
             ${this}.debug("end")
             return ${this}.ERROR_END
-        } else {
-            ${this}.debug("[${logdir}] directory exists.")
         }
 
         # create logfile
@@ -96,78 +100,67 @@ class logger {
             New-Item -Path ${logfilepath} -ItemType File -Force -ErrorAction Stop
         } catch {
             ${this}.error("Failed to create logfile.")
-            ${this}.debug("end")
             return ${this}.ERROR_END
         }
 
         # check whether the logfile exists
         if(-not(Test-Path -Path ${logfilepath} -PathType Leaf)) {
             ${this}.error("Failed to create logfile.")
-            ${this}.debug("end")
             return ${this}.ERROR_END
         }
 
         # set LOGFILE
         ${this}.LOGFILE=${logfilepath}
-        ${this}.debug("LOGFILE = " + ${this}.LOGFILE)
-        ${this}.debug("end")
 
         return ${this}.NORMAL_END
     }
-
 
     ############################################################################
     # open logfile
     ############################################################################
     [int]OpenLogFile([string]${logfilepath}) {
-        ${this}.debug("start")
 
-        # check log file existence
-        if(-not(Test-Path -Path ${logfilepath} -PathType Leaf)) {
-            ${this}.error("[${logfilepath}] file does not exist.")
-            return ${this}.ERROR_END
-        } else {
+        # check log directory existence
+        ${logdir}=(Split-Path -Path ${logfilepath} -Parent)
+        if(-not(Test-Path -Path ${logdir})) {
+            ${this}.error("[${logdir}] directory does not exist.")
             ${this}.debug("end")
-            ${this}.debug("[${logfilepath}] file directory exists.")
+            return ${this}.ERROR_END
         }
 
         # set LOGFILE
         ${this}.LOGFILE=${logfilepath}
-        ${this}.debug("LOGFILE = "+${this}.LOGFILE)
-        ${this}.debug("end")
 
         return ${this}.NORMAL_END
     }
-
 
     ############################################################################
     # output log message
     ############################################################################
     [void]debug([string]${logmsg}) {
-        ${this}.output_line(${this}.DEBUG_LEVEL, ${logmsg})
+        ${this}.outputLog(${this}.DEBUG_LEVEL, ${logmsg})
     }
 
     [void]info([string]${logmsg}) {
-        ${this}.output_line(${this}.INFO_LEVEL , ${logmsg})
+        ${this}.outputLog(${this}.INFO_LEVEL , ${logmsg})
     }
 
     [void]warning([string]${logmsg}) {
-        ${this}.output_line(${this}.WARNING_LEVEL , ${logmsg})
+        ${this}.outputLog(${this}.WARNING_LEVEL , ${logmsg})
     }
 
     [void]error([string]${logmsg}) {
-        ${this}.output_line(${this}.ERROR_LEVEL , ${logmsg})
+        ${this}.outputLog(${this}.ERROR_LEVEL , ${logmsg})
     }
 
     [void]critical([string]${logmsg}) {
-        ${this}.output_line(${this}.CRITICAL_LEVEL , ${logmsg})
+        ${this}.outputLog(${this}.CRITICAL_LEVEL , ${logmsg})
     }
 
-
     ############################################################################
-    # output line
+    # output log
     ############################################################################
-    [void]output_line([int]${level}, [string]${logmsg}) {
+    [void]outputLog([int]${level}, [string]${logmsg}) {
         if(${level} -ge ${this}.loglevel) {
             ${current_time} = (Get-Date -Format "yyyy/MM/dd HH:mm:ss")
             switch(${level}) {
