@@ -16,8 +16,8 @@
 ${shelldir}   = (Split-Path -Path ${MyInvocation}.MyCommand.Path -Parent)
 ${logbase}    = [System.IO.Path]::GetFileNameWithoutExtension(${MyInvocation}.MyCommand.Path)
 ${logfile}    = Join-Path -Path ${shelldir} -ChildPath "${logbase}.log"
-${normal_end} = 0
-${error_end}  = 255
+${normal_end} = ${True}
+${error_end}  = ${False}
 
 
 ################################################################################

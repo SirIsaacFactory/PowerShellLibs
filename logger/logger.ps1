@@ -38,8 +38,8 @@ class logger {
     [string]${VERSION} = "v1.00"
 
     # return value
-    [int]${NORMAL_END} = 0
-    [int]${ERROR_END}  = 1
+    [int]${NORMAL_END} = ${True}
+    [int]${ERROR_END}  = ${False}
 
     # loglevel
     [int]${DEBUG_LEVEL}    = 0
