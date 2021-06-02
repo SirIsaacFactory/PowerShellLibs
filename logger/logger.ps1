@@ -170,7 +170,7 @@ class logger {
                 ${this}.ERROR_LEVEL    { ${this}.loglabel = ${this}.LABEL_ERROR    }
                 ${this}.CRITICAL_LEVEL { ${this}.loglabel = ${this}.LABEL_CRITICAL }
             }
-    
+
             # get caller information
             ${callstack}=(Get-PSCallStack)
             ${callstack}=${callstack}[2]
@@ -184,7 +184,7 @@ class logger {
 
             # get function name
             ${callerfunction}=[string]${callstack}.FunctionName
-            
+
             # display message
             [System.Console]::WriteLine(
                 ${current_time}   + "," + 
@@ -194,7 +194,7 @@ class logger {
                 ${callerline}     + "," +
                 ${logmsg}
             )
-            
+
             # write message to the logfile
             if(-not(${this}.LOGFILE -eq "")) {
                 [System.IO.File]::AppendAllText(
